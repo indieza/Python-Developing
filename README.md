@@ -1,2 +1,2 @@
 # Python-Developing
-All of my Python tasks and assignments
+All of my Python tasks and projects
