@@ -8,52 +8,20 @@ isFirst = True
 
 for item in inputItems:
     if item == '*' or item == '/' or item == '+' or item == '-':
-        for i in range(len(numbers)):
-            if item == '*':
-                if isFirst:
-                    sum += int(numbers[i]) * int(numbers[i + 1])
-                    isFirst = False
-                else:
-                    if len(numbers) == 1:
-                        sum *= int(numbers[i])
-                    else:
-                        sum *= int(numbers[i]) * int(numbers[i + 1])
-            elif item == '/':
-                if isFirst:
-                    sum += int(numbers[i]) / int(numbers[i + 1])
-                    isFirst = False
-                else:
-                    if len(numbers) == 1:
-                        sum /= int(numbers[i])
-                    else:
-                        sum = math.trunc(
-                            sum / int(numbers[i]) / int(numbers[i + 1]))
-            elif item == '+':
-                if isFirst:
-                    sum += int(numbers[i]) + int(numbers[i + 1])
-                    isFirst = False
-                else:
-                    if len(numbers) == 1:
-                        sum += int(numbers[i])
-                    else:
-                        sum += int(numbers[i]) + int(numbers[i + 1])
+        for number in numbers:
+            if isFirst:
+                sum = int(number)
+                isFirst = False
             else:
-                if isFirst:
-                    sum += int(numbers[i]) - int(numbers[i + 1])
-                    isFirst = False
+                if item == '*':
+                    sum *= int(number)
+                elif item == '/':
+                    sum = math.trunc(sum / int(number))
+                elif item == '+':
+                    sum += int(number)
                 else:
-                    if len(numbers) == 1:
-                        sum -= int(numbers[i])
-                    else:
-                        sum = sum - int(numbers[i]) - int(numbers[i + 1])
-
-            del numbers[0]
-
-            if len(numbers) >= 1:
-                del numbers[0]
-
-            if len(numbers) == 0:
-                break
+                    sum -= int(number)
+        numbers = []
     else:
         numbers.append(item)
 
